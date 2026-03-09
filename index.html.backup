@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Epic Gaming Portal - Your destination for action, adventure, and strategy games"
+    />
+    <title>Epic Gaming Portal - Play the Best Games Online</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="container">
+          <div class="nav-wrapper">
+            <div class="logo">
+              <span class="logo-icon">🎮</span>
+              <span class="logo-text">Epic Gaming</span>
+            </div>
+            <ul class="nav-menu">
+              <li><a href="#home" class="nav-link active">Home</a></li>
+              <li><a href="#games" class="nav-link">Games</a></li>
+              <li><a href="#tournaments" class="nav-link">Tournaments</a></li>
+              <li><a href="#community" class="nav-link">Community</a></li>
+              <li><a href="#support" class="nav-link">Support</a></li>
+            </ul>
+            <button class="btn-primary">Sign In</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-background"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Welcome to the Ultimate
+            <span class="gradient-text">Gaming Experience</span>
+          </h1>
+          <p class="hero-subtitle">
+            Dive into a world of action, adventure, and strategy. Join millions
+            of players worldwide in epic battles and unforgettable quests.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn-primary btn-large">Start Playing</button>
+            <button class="btn-secondary btn-large">Browse Games</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">10M+</span>
+              <span class="stat-label">Active Players</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Games Available</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Online Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section class="games-section" id="games">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Games</h2>
+          <p class="section-subtitle">
+            Explore our most popular titles across all genres
+          </p>
+        </div>
+
+        <div class="games-grid">
+          <!-- Game Card 1 -->
+          <div class="game-card">
+            <div class="game-image action-game">
+              <div class="game-badge">Popular</div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Shadow Warriors</h3>
+              <p class="game-genre">Action • Multiplayer</p>
+              <p class="game-description">
+                Fast-paced combat with stunning graphics and intense multiplayer
+                battles.
+              </p>
+              <div class="game-footer">
+                <div class="game-rating">
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                  <span class="rating-text">4.8</span>
+                </div>
+                <button class="btn-play">Play Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game Card 2 -->
+          <div class="game-card">
+            <div class="game-image adventure-game">
+              <div class="game-badge new">New</div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Mystic Realms</h3>
+              <p class="game-genre">Adventure • RPG</p>
+              <p class="game-description">
+                Embark on an epic journey through magical lands filled with
+                mysteries.
+              </p>
+              <div class="game-footer">
+                <div class="game-rating">
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                  <span class="rating-text">4.9</span>
+                </div>
+                <button class="btn-play">Play Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game Card 3 -->
+          <div class="game-card">
+            <div class="game-image strategy-game">
+              <div class="game-badge trending">Trending</div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Empire Conquest</h3>
+              <p class="game-genre">Strategy • Simulation</p>
+              <p class="game-description">
+                Build your empire, command armies, and dominate the battlefield.
+              </p>
+              <div class="game-footer">
+                <div class="game-rating">
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                  <span class="rating-text">4.7</span>
+                </div>
+                <button class="btn-play">Play Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Why Choose Epic Gaming?</h2>
+          <p class="section-subtitle">Experience gaming like never before</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3 class="feature-title">Instant Play</h3>
+            <p class="feature-description">
+              No downloads required. Jump into your favorite games instantly
+              from any device.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3 class="feature-title">Tournaments</h3>
+            <p class="feature-description">
+              Compete in daily tournaments and win amazing prizes and exclusive
+              rewards.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3 class="feature-title">Community</h3>
+            <p class="feature-description">
+              Join millions of players worldwide and make friends in our vibrant
+              community.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">Secure Platform</h3>
+            <p class="feature-description">
+              Your data and privacy are protected with enterprise-grade security
+              measures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Start Your Gaming Journey?</h2>
+          <p class="cta-subtitle">
+            Join millions of players and experience the best games online
+          </p>
+          <button class="btn-primary btn-large">Create Free Account</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4 class="footer-title">Epic Gaming</h4>
+            <p class="footer-text">
+              Your ultimate destination for online gaming. Available 24/7 with
+              the best games and community.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="#games">Browse Games</a></li>
+              <li><a href="#tournaments">Tournaments</a></li>
+              <li><a href="#community">Community</a></li>
+              <li><a href="#support">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#help">Help Center</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#terms">Terms of Service</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Connect With Us</h4>
+            <div class="social-links">
+              <a href="#" class="social-link">Twitter</a>
+              <a href="#" class="social-link">Discord</a>
+              <a href="#" class="social-link">YouTube</a>
+              <a href="#" class="social-link">Twitch</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Epic Gaming Portal. All rights reserved. Available 24/7
+            online.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- watsonx Assistant Web Chat Integration -->
+    <!-- IMPORTANT: Replace YOUR_INTEGRATION_ID, YOUR_REGION, and YOUR_SERVICE_INSTANCE_ID with your actual values -->
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "ce781f27-95e0-46ff-84e0-9220b03cd319", // The ID of this integration.
+        region: "eu-de", // The region your integration is hosted in.
+        serviceInstanceID: "74507278-3bc2-4fff-a840-f61803267825", // The ID of your service instance.
+        onLoad: function (instance) {
+          instance.render()
+        },
+        // Custom configuration for gaming theme
+        carbonTheme: "g100", // Dark theme
+        hideCloseButton: false,
+        showLauncher: true,
+        openChatByDefault: false,
+        namespaceClassNames: "gaming-chat",
+        // Custom launcher configuration
+        launcher: {
+          label: "Chat with us",
+          description: "Need help? Chat with our support team",
+        },
+      }
+
+      setTimeout(function () {
+        const t = document.createElement("script")
+        t.src =
+          "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+          (window.watsonAssistantChatOptions.clientVersion || "latest") +
+          "/WatsonAssistantChatEntry.js"
+        document.head.appendChild(t)
+      })
+    </script>
+
+    <!-- Chatbot Logger Integration - Logs conversations to database -->
+    <script src="js/chatbot-logger.js"></script>
+  </body>
+</html>
