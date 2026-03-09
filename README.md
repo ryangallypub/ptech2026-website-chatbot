@@ -9,5 +9,5 @@ A modern, responsive website with an integrated IBM watsonx Assistant chatbot fo
 
 ## Project Overview
 
-This project combines a visually stunning website with an intelligent chatbot powered by IBM watsonx Assistant. Configure your chatbot with custom actions and responses tailored to your gaming platform's needs.
+This project combines a visually stunning website with an intelligent chatbot powered by IBM watsonx Assistant. Configure your chatbot with custom actions and responses tailored to your gaming platform's needs..
 
