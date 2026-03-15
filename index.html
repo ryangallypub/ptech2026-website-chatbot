@@ -23,15 +23,16 @@
             <ul class="nav-menu">
               <li><a href="#home" class="nav-link active">Home</a></li>
               <li><a href="#features" class="nav-link">Features</a></li>
-              <li><a href="#about" class="nav-link">About</a></li>
+              <li><a href="#" class="nav-link" onclick="openAbout()">About</a></li>
               <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="btn-primary">Get Started</button>
+            <button class="btn-primary" onclick="openAuth()">Get Started</button>
           </div>
         </div>
       </nav>
     </header>
 
+    <!-- Landing page -->
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-background"></div>
@@ -46,10 +47,8 @@
             Join our fitness community and start your Journey to awesomeness<br />
             Let's get fit, that'll be fire
           </p>
-          <div class="hero-buttons">
-            <button class="btn-primary btn-large">Start Chatting</button>
-            <button class="btn-secondary btn-large">Learn More</button>
-          </div>
+          <button class="btn-primary btn-large" onclick="openAuth()" style="width: 70%;">Ignition</button>
+          
           <div class="hero-stats">
             <div class="stat-item">
               <span class="stat-number">24/7</span>
@@ -68,27 +67,87 @@
       </div>
     </section>
 
+    <!-- Authentication Modal -->
+    <div id="authModal" class="auth-modal">
+
+      <div class="auth-box">
+
+        <span class="close-btn" onclick="closeAuth()">×</span>
+
+        <!-- SIGN UP FORM -->
+        <div id="signupForm">
+
+          <h2>Create Account</h2>
+
+          <input type="text" id="signupName" placeholder="Full Name" required>
+          <input type="email" id="signupEmail" placeholder="Email" required>
+          <input type="password" id="signupPassword" placeholder="Password" required>
+
+          <button class="btn-primary auth-btn" onclick="signup()">Sign Up</button>
+
+          <p class="auth-switch">
+            Already have an account?
+            <span onclick="showLogin()">Log in</span>
+          </p>
+
+          <p class="auth-support">
+            Need help? Contact: 
+            <a href="mailto:support@fitnfire.ie" target="_blank">support@fitnfire.ie</a>
+          </p>
+
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm" style="display:none">
+
+          <h2>Log In</h2>
+
+          <input type="email" id="loginEmail" placeholder="Email" required>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+
+          <button class="btn-primary auth-btn" onclick="login()">Log In</button>
+
+          <p class="auth-switch">
+            Don't have an account?
+            <span onclick="showSignup()">Sign Up</span>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div id="aboutModal" class="auth-modal">
+
+      <div class="auth-box">
+
+        <span class="close-btn" onclick="closeAbout()">×</span>
+
+        <h2>About Fit n' Fire</h2>
+
+        <p>
+      Fit n' Fire is a student-built fitness platform helping users achieve
+      their health goals with training plans, nutrition guides and AI support.
+        </p>
+
+        <p>
+      Powered by IBM Watson AI and built by Ace, fagan, and Ariff.
+        </p>
+
+        <p>
+          Need help? Contact  
+        <a href="mailto:support@fitnfire.ie">support@fitnfire.ie</a>
+        </p>
+
+      </div>
+
+    </div>
+
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <div class="footer-section">
-            <h4 class="footer-title">P-TECH</h4>
-            <p class="footer-text">
-              A student project built by P-TECH students using IBM Watson AI and
-              modern web technologies. Available 24/7.
-            </p>
-          </div>
-
-          <div class="footer-section">
-            <h4 class="footer-title">Quick Links</h4>
-            <ul class="footer-links">
-              <li><a href="#features">Features</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </div>
 
           <div class="footer-section">
             <h4 class="footer-title">Support</h4>
@@ -153,5 +212,6 @@
 
     <!-- Chatbot Logger Integration - Logs conversations to database -->
     <script src="js/chatbot-logger.js"></script>
+    <script src="js/authentication.js"></script>
   </body>
 </html>

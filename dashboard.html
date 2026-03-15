@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fit n' Fire Dashboard</title>
+        <link rel="stylesheet" href="css/style.css">
+    /head>
+
+    <body>
+
+        <header class="header">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="nav-wrapper">
+
+                        <div class="logo">
+                            <span class="logo-icon">💪🏼🔥</span>
+                            <span class="logo-text">Fit n' Fire</span>
+                        </div>
+
+                        <ul class="nav-menu">
+                            <li><a href="#" class="nav-link">Dashboard</a></li>
+                            <li><a href="#" class="nav-link" onclick="openAbout()">About</a></li>
+                            <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="dashboard">
+
+            <div class="container">
+
+                <h1 class="dashboard-title">
+                Welcome back,
+                <span id="username"></span> 🔥
+                </h1>
+
+                <p class="dashboard-subtitle">
+                Let's keep that fire burning.
+                </p>
+
+            <div class="dashboard-grid">
+
+                <div class="dash-card">
+                    <h3>🏋️ Training Plans</h3>
+                    <p>Structured workout programs for beginners to advanced athletes.</p>
+                    <button class="btn-primary">Explore</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>🥗 Nutrition Plans</h3>
+                    <p>Meal plans designed to maximise your fitness results.</p>
+                    <button class="btn-primary">View Plans</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>👨‍🏫 Trainers</h3>
+                    <p>Meet professional trainers who can guide your workouts.</p>
+                    <button class="btn-primary">Find Trainers</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>🧠 Consultants</h3>
+                    <p>Get personalised fitness and lifestyle advice.</p>
+                    <button class="btn-primary">Book Session</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>🔥 Daily Motivation</h3>
+                    <p>Stay motivated with daily fitness tips and inspiration.</p>
+                    <button class="btn-primary" onclick="openDt()">View Tips</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>⚖️ BMI & Calorie Calculator</h3>
+                    <p>Calculate your BMI and daily calorie needs.</p>
+                    <button onclick="openBMICalc()" class="btn-primary">Open Calculator</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>📊 Progress Charts</h3>
+                    <p>Track your weight and fitness progress.</p>
+                    <button onclick="showProgress()" class="btn-primary">View Progress</button>
+                </div>
+
+                <div class="dash-card">
+                    <h3>📅 Trainer Booking</h3>
+                    <p>Book sessions with professional trainers.</p>
+                    <button onclick="openBooking()" class="btn-primary">Book Trainer</button>
+                </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ABOUT POPUP -->
+
+        <div id="aboutModal" class="auth-modal">
+
+            <div class="auth-box">
+
+                <span class="close-btn" onclick="closeAbout()">×</span>
+
+                <h2>About Fit n' Fire</h2>
+
+                <p>
+                Fit n' Fire is a modern fitness platform designed to help people achieve
+                their health goals through personalised training plans, nutrition
+                guidance and AI-powered assistance.
+                </p>
+
+                <p>
+                Built by P-TECH students with support from IBM Watson AI.
+                </p>
+
+                <p>
+                Contact us:  
+                <a href="mailto:support@fitnfire.ie">support@fitnfire.ie</a>
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Trainer booker modal  -->
+         <div id="bookingModal" class="auth-modal">
+
+            <div class="auth-box">
+
+                <span class="close-btn" onclick="closeBooking()">×</span>
+
+                <h2>Book a Trainer</h2>
+
+                <input type="text" id="trainerName" placeholder="Trainer Name">
+                <input type="date" id="bookingDate">
+
+                <button onclick="bookTrainer()" class="btn-primary">Book</button>
+
+                <p id="bookingMessage"></p>
+
+            </div>
+
+        </div>
+
+        <!-- BMI claculator modal  -->
+        <div id="bmiModal" class="auth-modal">
+
+            <div class="auth-box">
+
+                <span class="close-btn" onclick="closeBMI()">×</span>
+
+                <h2>BMI & Calorie Calculator</h2>
+
+                <input type="number" id="weight" placeholder="Weight (kg)">
+                <input type="number" id="height" placeholder="Height (cm)">
+                <input type="number" id="age" placeholder="Age">
+
+                <select id="gender">
+                 <option value="male">Male</option>
+                 <option value="female">Female</option>
+                </select>
+
+                <button onclick="calculateBMI()" class="btn-primary">Calculate</button>
+
+                <p id="bmiResult"></p>
+                <p id="calorieResult"></p>
+
+            </div>
+
+        </div>
+
+        <!-- Daily tips  -->
+        <div id="dtModal" class="auth-modal">
+
+            <div class="auth-box">
+
+                <span class="close-btn" onclick="closeDt()">×</span>
+
+                <h2>Daily tips and tricks💪</h2>
+
+                <p>Rumor has it that, if you do 10 pull ups a day for 90 days, your back will be an insane asset😱</p>
+
+            </div>
+        </div>
+
+        <canvas id="progressChart" width="400" height="200"></canvas>
+
+        <!-- watsonx Assistant Web Chat Integration -->
+        <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "d0a8f685-949c-4fa7-87c8-ad05922d056b", // The ID of this integration.
+            region: "eu-gb", // The region your integration is hosted in.
+            serviceInstanceID: "2a9a010c-0bf9-446d-8c35-b30431708219", // The ID of your service instance.
+            onLoad: function (instance) {
+            instance.render()
+            },
+            // Custom configuration
+            carbonTheme: "g100", // Dark theme
+            hideCloseButton: false,
+            showLauncher: true,
+            openChatByDefault: false,
+            // Custom launcher configuration
+            launcher: {
+            label: "Chat with us",
+            description: "Need help? Chat with our P-TECH chatbot",
+            },
+        }
+
+        setTimeout(function () {
+            const t = document.createElement("script")
+            t.src =
+            "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+            (window.watsonAssistantChatOptions.clientVersion || "latest") +
+            "/WatsonAssistantChatEntry.js"
+            document.head.appendChild(t)
+        })
+        </script>
+
+    <!-- Chatbot Logger Integration - Logs conversations to database -->
+        <script src="js/chatbot-logger.js"></script>
+        <script src="js/dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </body>
+</html>
