@@ -1,0 +1,29 @@
+{
+  "name": "ptech2026-website-chatbot",
+  "version": "1.0.0",
+  "description": "A modern, responsive website with an integrated IBM watsonx Assistant chatbot for customer support.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryangallypub/ptech2026-website-chatbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ryangallypub/ptech2026-website-chatbot/issues"
+  },
+  "homepage": "https://github.com/ryangallypub/ptech2026-website-chatbot#readme",
+  "dependencies": {
+    "ai": "^6.0.116",
+    "open": "^11.0.0",
+    "openai": "^6.32.0"
+  }
+}
