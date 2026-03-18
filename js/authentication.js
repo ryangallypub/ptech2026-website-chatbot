@@ -61,9 +61,12 @@ document.getElementById("aboutModal").style.display="none"
 }
 
 window.onclick = function(event) {
-  const modal = document.getElementById("authModal")
+  const modals = document.querySelectorAll(".auth-modal")
 
-  if(event.target === modal){
-    modal.style.display = "none"
+  for (const m of modals){
+     if(event.target === m){
+    m.style.display = "none"
   }
+  }
+ 
 }
