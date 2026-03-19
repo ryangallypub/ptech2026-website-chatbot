@@ -4,7 +4,7 @@
  */
 
 class ChatbotLogger {
-    constructor(apiBaseUrl = 'http://localhost:3000/api') {
+    constructor(apiBaseUrl = 'https://supreme-journey-5gwvgg4w5vvwc7v75-3000.app.github.dev/api') {
         this.apiBaseUrl = apiBaseUrl;
         this.conversationId = null;
         this.userId = this.generateUserId();
