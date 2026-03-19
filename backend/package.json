@@ -1,7 +1,6 @@
 {
   "name": "gaming-chatbot-backend",
   "version": "1.0.0",
-  "type": "module",
   "description": "Backend server for gaming chatbot with database logging",
   "main": "server.js",
   "scripts": {
@@ -23,8 +22,7 @@
     "express": "^4.18.2",
     "sqlite3": "^5.1.6",
     "cors": "^2.8.5",
-    "uuid": "^9.0.0",
-    "openai": "^latest"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
