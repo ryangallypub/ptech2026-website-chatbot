@@ -334,6 +334,7 @@ app.get('/api/analytics/common-questions', (req, res) => {
  * Health check endpoint
  */
 app.get('/api/health', (req, res) => {
+    console.log('Health check requested'); 
     res.json({
         status: 'healthy',
         timestamp: new Date().toISOString(),
