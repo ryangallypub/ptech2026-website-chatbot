@@ -65,6 +65,7 @@ function initializeDatabase() {
 app.post('/api/conversation/start', (req, res) => {
     const { userId, userAgent, deviceType } = req.body;
     const conversationId = uuidv4();
+    console.log('Conversation started:', conversationId);
     
     const sql = `
         INSERT INTO conversations (conversation_id, user_id, user_agent, device_type)

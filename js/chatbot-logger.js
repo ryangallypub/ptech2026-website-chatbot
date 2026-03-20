@@ -4,7 +4,7 @@
  */
 
 class ChatbotLogger {
-    constructor(apiBaseUrl = 'http://localhost:3000/api') {
+    constructor(apiBaseUrl = 'https://fictional-space-chainsaw-69jvg9j64qjrhrxpr-3000.app.github.dev/api') {
         this.apiBaseUrl = apiBaseUrl;
         this.conversationId = null;
         this.userId = this.generateUserId();
