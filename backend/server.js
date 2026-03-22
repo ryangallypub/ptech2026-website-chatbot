@@ -15,6 +15,7 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 // Middleware
 app.use(cors()); // Enable CORS for frontend
 app.use(express.json()); // Parse JSON bodies
@@ -30,6 +31,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
         initializeDatabase();
     }
 });
+
 
 /**
  * Initialize database with schema
@@ -372,7 +374,7 @@ function updateCommonQuestions(questionText) {
 
 app.listen(PORT, () => {
     console.log('\n' + '='.repeat(60));
-    console.log('  Gaming Chatbot Backend Server');
+    console.log('  Fit n\' Fire Chatbot Backend Server');
     console.log('='.repeat(60));
     console.log(`  Status: Running`);
     console.log(`  Port: ${PORT}`);

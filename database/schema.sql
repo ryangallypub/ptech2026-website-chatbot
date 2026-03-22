@@ -1,5 +1,5 @@
 -- ============================================================================
--- Gaming Chatbot Database Schema
+-- Fit n' Fire Chatbot Database Schema
 -- Database: SQLite (can be adapted for PostgreSQL, MySQL, etc.)
 -- Purpose: Store chatbot conversation logs and analytics
 -- ============================================================================
