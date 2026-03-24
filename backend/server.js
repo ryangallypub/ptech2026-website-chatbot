@@ -10,10 +10,12 @@ const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const argon2 = require('argon2');
 
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 
 // Middleware
 app.use(cors()); // Enable CORS for frontend
@@ -30,6 +32,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
         initializeDatabase();
     }
 });
+
 
 /**
  * Initialize database with schema
@@ -65,7 +68,7 @@ function initializeDatabase() {
 app.post('/api/conversation/start', (req, res) => {
     const { userId, userAgent, deviceType } = req.body;
     const conversationId = uuidv4();
-    
+    console.log(req.body)
     const sql = `
         INSERT INTO conversations (conversation_id, user_id, user_agent, device_type)
         VALUES (?, ?, ?, ?)
@@ -157,6 +160,32 @@ app.post('/api/message/log', (req, res) => {
 });
 
 /**
+ * POST /api/user
+ * Submit user credentials/login
+ */
+app.post('/api/signup', async (req, res) => {
+    const userid = uuidv4();
+    const { userName, email, userPassword } = req.body;
+
+    try {
+        // Hash the password with Argon2id
+        const hashedPassword = await argon2.hash(userPassword, {
+            type: argon2.argon2id // Explicitly use Argon2id
+        });
+
+        const sql = `INSERT INTO Users (userid, userName, email, userPassword) VALUES (?, ?, ?, ?)`;
+        
+        db.run(sql, [userid, userName, email, hashedPassword], function(err) {
+            if (err) return res.status(500).json({ success: false, message: 'Database error' });
+            res.json({ success: true, message: 'User registered!' });
+        });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Error hashing password' });
+    }
+});
+
+
+/**
  * POST /api/feedback
  * Submit user feedback on a bot response
  */
@@ -185,6 +214,72 @@ app.post('/api/feedback', (req, res) => {
         });
     });
 });
+
+/**
+ * POST /api/login
+ * Verifies user credentials against the database
+ */
+app.post('/api/login', async (req, res) => { // Added 'async'
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: 'Email and password required' });
+    }
+
+    const sql = `SELECT * FROM Users WHERE email = ?`;
+
+    db.get(sql, [email], async (err, user) => { // Added 'async'
+        if (err) return res.status(500).json({ success: false, message: 'Server error' });
+        
+        if (!user) {
+            return res.status(401).json({ success: false, message: 'Invalid credentials' });
+        }
+
+        try {
+            // argon2.verify(hashedPasswordFromDB, plainTextPasswordFromRequest)
+            if (await argon2.verify(user.userPassword, password) && user.email === email) {
+                res.json({
+                    success: true,
+                    message: 'Login successful',
+                    userId: user.userid,
+                    userName: user.userName
+                });
+            } else {
+                res.status(401).json({ success: false, message: 'Invalid credentials' });
+            }
+        } catch (err) {
+            res.status(500).json({ success: false, message: 'Error verifying password' });
+        }
+    });
+});
+
+
+/**
+ * GET /api/user/:id
+ * Fetches a single user's data by their ID
+ */
+app.get('/api/user/:id', (req, res) => {
+    const userId = req.params.id;
+
+    const sql = `SELECT userName, email FROM Users WHERE userId = ?`;
+
+    console.log(sql)
+    db.get(sql, [userId], (err, user) => {
+        if (err) {
+            return res.status(500).json({ success: false, error: err.message });
+        }
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        res.json({
+            success: true,
+            user: user
+        });
+    });
+});
+
+
 
 /**
  * GET /api/conversations
@@ -366,13 +461,15 @@ function updateCommonQuestions(questionText) {
 }
 
 
+
+
 // ============================================================================
 // SERVER STARTUP
 // ============================================================================
 
 app.listen(PORT, () => {
     console.log('\n' + '='.repeat(60));
-    console.log('  Gaming Chatbot Backend Server');
+    console.log('  Fit n\' Fire Chatbot Backend Server');
     console.log('='.repeat(60));
     console.log(`  Status: Running`);
     console.log(`  Port: ${PORT}`);
@@ -397,3 +494,4 @@ process.on('SIGINT', () => {
 module.exports = app;
 
 // Made with Bob
+
