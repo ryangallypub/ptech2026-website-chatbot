@@ -65,6 +65,7 @@ function initializeDatabase() {
 app.post('/api/conversation/start', (req, res) => {
     const { userId, userAgent, deviceType } = req.body;
     const conversationId = uuidv4();
+    console.log('Conversation started:', conversationId);
     
     const sql = `
         INSERT INTO conversations (conversation_id, user_id, user_agent, device_type)
@@ -334,6 +335,7 @@ app.get('/api/analytics/common-questions', (req, res) => {
  * Health check endpoint
  */
 app.get('/api/health', (req, res) => {
+    console.log('Health check requested'); 
     res.json({
         status: 'healthy',
         timestamp: new Date().toISOString(),

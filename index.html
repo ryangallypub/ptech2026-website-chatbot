@@ -17,14 +17,14 @@
         <div class="container">
           <div class="nav-wrapper">
             <div class="logo">
-              <span class="logo-icon">🤖</span>
-              <span class="logo-text">P-TECH 2026</span>
+              <span class="logo-icon">🎮</span>
+              <span class="logo-text">Game Centre</span>
             </div>
             <ul class="nav-menu">
-              <li><a href="#home" class="nav-link active">Home</a></li>
-              <li><a href="#features" class="nav-link">Features</a></li>
-              <li><a href="#about" class="nav-link">About</a></li>
-              <li><a href="#contact" class="nav-link">Contact</a></li>
+              <li><a href="index.html" class="nav-link active">Home</a></li>
+              <li><a href="features.html" class="nav-link">Features</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <button class="btn-primary">Get Started</button>
           </div>
@@ -38,17 +38,16 @@
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">
-            Welcome
-            <span class="gradient-text">P-TECH Students!</span>
+            Welcome To
+            <span class="gradient-text">Game Helping Centre</span>
           </h1>
           <p class="hero-subtitle">
-            Ready to build your very own custom website and AI‑powered chatbot
-            using IBM Watson? <br />
-            Let’s bring your ideas to life!
+            Get something wrong?
+          <br/>
+            Lets help you solve these problems!
           </p>
           <div class="hero-buttons">
-            <button class="btn-primary btn-large">Start Chatting</button>
-            <button class="btn-secondary btn-large">Learn More</button>
+            <button class="btn-secondary btn-large" onclick="window.location.href='learn more.html'">Learn More</button>
           </div>
           <div class="hero-stats">
             <div class="stat-item">
@@ -122,34 +121,18 @@
 
     <!-- watsonx Assistant Web Chat Integration -->
     <script>
-      window.watsonAssistantChatOptions = {
-        integrationID: "ce781f27-95e0-46ff-84e0-9220b03cd319", // The ID of this integration.
-        region: "eu-de", // The region your integration is hosted in.
-        serviceInstanceID: "74507278-3bc2-4fff-a840-f61803267825", // The ID of your service instance.
-        onLoad: function (instance) {
-          instance.render()
-        },
-        // Custom configuration
-        carbonTheme: "g100", // Dark theme
-        hideCloseButton: false,
-        showLauncher: true,
-        openChatByDefault: false,
-        // Custom launcher configuration
-        launcher: {
-          label: "Chat with us",
-          description: "Need help? Chat with our P-TECH chatbot",
-        },
-      }
-
-      setTimeout(function () {
-        const t = document.createElement("script")
-        t.src =
-          "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
-          (window.watsonAssistantChatOptions.clientVersion || "latest") +
-          "/WatsonAssistantChatEntry.js"
-        document.head.appendChild(t)
-      })
-    </script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "0ae02396-9a97-463b-a013-0f955985c570", // The ID of this integration.
+    region: "eu-gb", // The region your integration is hosted in.
+    serviceInstanceID: "bfa2fe9e-24fa-499c-aa4d-534609a507c9", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
 
     <!-- Chatbot Logger Integration - Logs conversations to database -->
     <script src="js/chatbot-logger.js"></script>
