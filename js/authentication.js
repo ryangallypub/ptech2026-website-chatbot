@@ -1,4 +1,5 @@
 "use strict"
+
 function openAuth() {
   document.getElementById("authModal").style.display = "flex";
 }
@@ -17,40 +18,80 @@ function showSignup() {
   document.getElementById("signupForm").style.display = "block";
 }
 
-function signup() {
+async function signup() {
+  const userName = document.getElementById("signupName").value;
+  const email = document.getElementById("signupEmail").value;
+  const userPassword = document.getElementById("signupPassword").value;
 
-  const name = document.getElementById("signupName").value
-  const email = document.getElementById("signupEmail").value
-  const password = document.getElementById("signupPassword").value
+  if (!userName || !email || !userPassword) {
+    return alert("Please input valid credentials!");
+  }
 
-  const user = { name, email, password }
+  // SEND DATA TO YOUR BACKEND
+  try {
+    const response = await fetch('https://super-duper-space-tribble-7gr4pxqgpppcpg6q-3000.app.github.dev/api/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userName, email, userPassword })
+    });
 
-  localStorage.setItem("fitnfireUser", JSON.stringify(user))
+    const data = await response.json();
 
-  alert("Account created successfully!")
-
-  showLogin()
-}
-
-function login() {
-
-  const email = document.getElementById("loginEmail").value
-  const password = document.getElementById("loginPassword").value
-
-  const savedUser = JSON.parse(localStorage.getItem("fitnfireUser"))
-
-  if(savedUser && email === savedUser.email && password === savedUser.password){
-
-      localStorage.setItem("loggedIn","true")
-
-      window.location.href = "dashboard.html"
-
-  } else {
-
-      alert("Invalid login details")
-
+    if (data.success) {
+      alert("Account created successfully!");
+      showLogin();
+    } else {
+      alert("Error: " + data.error);
+    }
+  } catch (error) {
+    console.error("Connection failed:", error);
   }
 }
+
+
+async function login() {
+  // 1. Grab what the user typed
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  // 2. Simple check before sending
+  if (!email || !password) {
+    return alert("Please enter both email and password!");
+  }
+
+  try {
+    // 3. Send the login request to the backend
+    const response = await fetch('https://super-duper-space-tribble-7gr4pxqgpppcpg6q-3000.app.github.dev/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }) // Send as JSON
+    });
+
+    // 4. Wait for the server's answer
+    const data = await response.json();
+
+    if (data.success) {
+      // 5. If successful, save a "session" flag and redirect
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("userId", data.userId); // Store the ID the server sent back
+      localStorage.setItem("userName", data.userName)
+
+      console.log(data.userId)
+
+      
+      alert("Login successful!");
+      window.location.href = "dashboard.html";
+    } else {
+      // 6. If the server says "No" (wrong password/user not found)
+      alert("Error: " + data.message);
+    }
+  } catch (error) {
+    // 7. If the server is down
+    console.error("Login failed:", error);
+    alert("Could not connect to the server.");
+  }
+}
+
 
 function openAbout(){
 document.getElementById("aboutModal").style.display="flex"

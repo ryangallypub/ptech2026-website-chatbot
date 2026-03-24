@@ -135,6 +135,16 @@ INSERT INTO common_questions (question_text, count) VALUES
 ('Sample question 2', 120);
 */
 
+-- Table: Users
+-- Stores individual conversation sessions
+CREATE TABLE IF NOT EXISTS Users (
+    userid TEXT PRIMARY KEY,
+    userName TEXT,
+    email TEXT,
+    userPassword TEXT,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- ============================================================================
 -- End of Schema
 -- ============================================================================

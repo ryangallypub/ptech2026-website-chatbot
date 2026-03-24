@@ -1,13 +1,36 @@
 "use strict"
 
-// Dashboard auth  
-const user = JSON.parse(localStorage.getItem("fitnfireUser"))
+// Check if user is already sighned in and load user data 
+async function loadUserData() {
+  // 1. Get the ID we saved during the login process
+  const userId = localStorage.getItem("userId");
+  console.log(userId)
 
-if(!user){
-window.location.href="index.html"
+  // 2. Security check: if no ID, kick them to login
+  // if (!userId) {
+  //   window.location.href = "index.html";
+  //   return;
+  // }
+
+  try {
+    // 3. Ask the backend for this specific user's info
+    const response = await fetch(`https://super-duper-space-tribble-7gr4pxqgpppcpg6q-3000.app.github.dev/api/user/${userId}`);
+    const data = await response.json();
+
+    if (data.success) {
+      // 4. Put the name from the database onto the screen
+      const fullName = data.user.userName;
+      document.getElementById("username").textContent = fullName.split(" ")[0];
+    } else {
+      window.location.href = "index.html";
+    }
+  } catch (error) {
+    console.error("Failed to load user:", error);
+  }
 }
 
-document.getElementById("username").textContent = user.name.split(" ")[0]
+// Run this function as soon as the page loads
+loadUserData();
 
 function logout(){
 localStorage.removeItem("loggedIn")
