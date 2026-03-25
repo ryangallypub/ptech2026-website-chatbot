@@ -34,6 +34,15 @@ loadUserData();
 
 function logout(){
 localStorage.removeItem("loggedIn")
+
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+// Example usage:
+deleteCookie('IBM_WAC_ANONYMOUS_USER_ID');
+
+
 window.location.href="index.html"
 }
 
@@ -145,3 +154,34 @@ window.onclick = function(event) {
   }
  
 }
+
+
+// Chatbot logger
+window.watsonAssistantChatOptions = {
+            integrationID: "d0a8f685-949c-4fa7-87c8-ad05922d056b", // The ID of this integration.
+            region: "eu-gb", // The region your integration is hosted in.
+            serviceInstanceID: "2a9a010c-0bf9-446d-8c35-b30431708219", // The ID of your service instance.
+             userId: localStorage.getItem("userId") || "new_session_user",
+            onLoad: function (instance) {
+            instance.render()
+            },
+            // Custom configuration
+            carbonTheme: "g100", // Dark theme
+            hideCloseButton: false,
+            showLauncher: true,
+            openChatByDefault: false,
+            // Custom launcher configuration
+            launcher: {
+            label: "Chat with us",
+            description: "Need help? Chat with our P-TECH chatbot",
+            },
+        }
+
+        setTimeout(function () {
+            const t = document.createElement("script")
+            t.src =
+            "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+            (window.watsonAssistantChatOptions.clientVersion || "latest") +
+            "/WatsonAssistantChatEntry.js"
+            document.head.appendChild(t)
+        })

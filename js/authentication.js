@@ -18,13 +18,32 @@ function showSignup() {
   document.getElementById("signupForm").style.display = "block";
 }
 
+function showErr(){
+  const authErrors = document.querySelectorAll(".auth-error");
+
+  for (const a of authErrors) {
+   a.style.display = 'block';
+};
+  
+}
+
+function removeErr(){
+  const authErrors = document.querySelectorAll(".auth-error");
+
+  for (const a of authErrors) {
+   a.style.display = 'none';
+};
+  
+}
+
 async function signup() {
   const userName = document.getElementById("signupName").value;
   const email = document.getElementById("signupEmail").value;
   const userPassword = document.getElementById("signupPassword").value;
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if (!userName || !email || !userPassword) {
-    return alert("Please input valid credentials!");
+  if (!userName || !regex.test(email) || !userPassword) {
+    return showErr();
   }
 
   // SEND DATA TO YOUR BACKEND
@@ -40,6 +59,7 @@ async function signup() {
     if (data.success) {
       alert("Account created successfully!");
       showLogin();
+      removeErr()
     } else {
       alert("Error: " + data.error);
     }
@@ -56,7 +76,7 @@ async function login() {
 
   // 2. Simple check before sending
   if (!email || !password) {
-    return alert("Please enter both email and password!");
+    return showErr();
   }
 
   try {
@@ -71,6 +91,8 @@ async function login() {
     const data = await response.json();
 
     if (data.success) {
+      removeErr()
+
       // 5. If successful, save a "session" flag and redirect
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("userId", data.userId); // Store the ID the server sent back
