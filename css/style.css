@@ -18,8 +18,8 @@
   --bg-card: #1a1a1a;
 
   --text-primary: #ffffff;
-  --text-secondary: #ffb3b3;
-  --text-muted: #cc6666;
+  --text-secondary: #ffffff;
+  --text-muted: #ffffff;
 
   --border-color: #1a3d5c;
   --shadow-sm: 0 2px 4px rgba(255, 0, 0, 0.2);
@@ -164,7 +164,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255, 204, 204, 0.5);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 .btn-secondary {
@@ -264,10 +264,18 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
   line-height: 1.8;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.593);
+  opacity: 2;
+  border: 2px solid var(--primary-color);
+  display: inline-block;
+  opacity: 2;
 }
 
 .hero-buttons {
@@ -579,6 +587,8 @@ body {
 
   .hero-subtitle {
     font-size: 1rem;
+    font-weight: 3000;
+
   }
 
   .hero-buttons {
